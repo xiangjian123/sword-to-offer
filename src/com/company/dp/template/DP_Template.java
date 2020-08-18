@@ -57,7 +57,7 @@ class H2 extends HummerModel {
     }
 }
 
-public class DP_Tempalte {
+public class DP_Template {
     public static void main(String[] args) {
         HummerModel h1 = new H1();
         h1.run();
