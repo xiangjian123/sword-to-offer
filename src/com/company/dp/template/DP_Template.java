@@ -1,65 +1,95 @@
 package com.company.dp.template;
 
 abstract class HummerModel {
-    public abstract void start();
-    public abstract void stop();
-    public abstract void alarm();
-    public abstract void engineBoom();
+    protected abstract void start();
+    protected abstract void stop();
+    protected abstract void alarm();
+    protected abstract void engineBoom();
     public final void run() {
-            this.start();
-            this.engineBoom();
+        this.start();
+        this.engineBoom();
+        if (this.isAlarm()) {
             this.alarm();
-            this.stop();
+        }
+        this.stop();
+    }
+
+    // Hook method
+    protected boolean isAlarm() {
+        return true;
     }
 }
 
 class H1 extends HummerModel {
+    private boolean flag = true;
+
     @Override
-    public void alarm() {
+    protected void alarm() {
         System.out.println("H1 alarm");
     }
 
     @Override
-    public void engineBoom() {
+    protected void engineBoom() {
         System.out.println("H1 engineboom");
     }
 
     @Override
-    public void start() {
+    protected void start() {
         System.out.println("H1 start");
     }
 
     @Override
-    public void stop() {
+    protected void stop() {
         System.out.println("H1 stop");
+    }
+
+    @Override
+    protected boolean isAlarm() {
+        return this.flag;
+    }
+
+    public void setAlarm(boolean isAlarm) {
+        this.flag = isAlarm;
     }
 }
 
 class H2 extends HummerModel {
     @Override
-    public void alarm() {
+    protected void alarm() {
         System.out.println("H2 alarm");
     }
 
     @Override
-    public void engineBoom() {
+    protected void engineBoom() {
         System.out.println("H2 engineboom");
     }
 
     @Override
-    public void start() {
+    protected void start() {
         System.out.println("H2 start");
     }
 
     @Override
-    public void stop() {
+    protected void stop() {
         System.out.println("H2 stop");
+    }
+
+    @Override
+    protected boolean isAlarm() {
+        return false;
     }
 }
 
 public class DP_Template {
     public static void main(String[] args) {
-        HummerModel h1 = new H1();
+        H1 h1 = new H1();
+        h1.setAlarm(true);
         h1.run();
+
+        h1.setAlarm(false);
+        h1.run();
+
+        H2 h2 = new H2();
+        h2.run();
     }
 }
