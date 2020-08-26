@@ -1,7 +1,5 @@
 package com.company.dp.decorator;
 
-import java.text.DecimalFormat;
-
 abstract class SchoolReport {
     public abstract void report();
     public abstract void sign(String name);

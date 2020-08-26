@@ -1,4 +1,4 @@
-package com.company.dp;
+package com.company.dp.decorator;
 
 
 abstract class AbstractComponent {
@@ -59,7 +59,7 @@ class C2 extends AbstractDecorator {
 }
 
 
-public class DP_Decorator {
+public class DP_Decorator1 {
     public static void main(String[] args) {
         AbstractComponent c = new Component();
         c = new C1(c);

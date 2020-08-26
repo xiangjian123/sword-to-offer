@@ -1,4 +1,4 @@
-package com.company.dp;
+package com.company.dp.facade;
 
 
 class F_C1 {
